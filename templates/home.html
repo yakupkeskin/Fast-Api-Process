@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<body>
+<h2>Saat Bul</h2>
+<form action = "/saatkac" method="GET" >
+    <input type="submit" value="Saat Kaç ?">
+    <a>Time = {{time}}</a>
+</form>
+<br>
+<br>
+<br>
+
+
+<h2>Hesapla</h2>
+<form action = "/" method="POST" >
+    <label for="a">1. Sayı:</label><br/>
+    <input type="text" id = "a" name = "a" ><br/><br/>
+    <label for="b">2. Sayı:</label><br/>
+    <input type="text" id = "b" name = "b"><br/><br/>
+    <a>Sonuc = {{result}}</a>
+    <br>
+    <br>
+    <input formaction="/topla" type="submit" value="Topla">
+    <input formaction="/cikar" type="submit" value="Çıkar">
+    <input formaction="/carp" type="submit" value="Çarp">
+    <input formaction="/bol" type="submit" value="Böl">
+    <input formaction="/ustal" type="submit" value="Üst Al">
+</form>
+<br>
+<br>
+<br>
+
+
+
+
+<h2>Process Ekle</h2>
+<form action = "/pro/" method="POST" enctype="multipart/form-data" >
+    <input type="text" id = "s" name = "s" ><br/><br/>
+    <input type="submit" value="New Process">
+</form>
+<br>
+<br>
+<br>
+
+
+
+<table>
+    <tr>
+        <th>Pid</th>
+        <th>Bekleme Süresi</th>
+    </tr>
+    {%for proc in procs%}
+    <tr>
+        <td>{{proc.get("pid")}}</td>
+        <td>{{proc.get("seconds")}}</td>
+    </tr>
+     {%endfor%}
+</table>
+
+
+</body>
+</html>
